@@ -1,0 +1,34 @@
+@startuml
+actor "Користувач" as User
+
+node "Клієнтський застосунок" as ClientApp {
+    [<<ОС Windows/Linux>>]
+    [<<Web-браузер>>]
+    [<<JavaScript (React або Angular)>>]
+    [Інтерфейс користувача]
+}
+
+node "Сервер застосунків" as AppServer {
+    [<<ОС Linux>>]
+    [<<Node.js>>]
+    [<<Express або інший фреймворк>>]
+    [API]
+}
+
+node "Сервер бази даних" as DatabaseServer {
+    [<<ОС Linux>>]
+    [<<Database Server (MongoDB або PostgreSQL)>>]
+    [JSON/SQL]
+}
+
+node "Сховище файлів" as FileStorage {
+    [<<ОС Linux>>]
+    [<<Облако або локальне сховище файлів>>]
+    [Репозиторій файлів]
+}
+
+User --> ClientApp : Використовує інтерфейс
+ClientApp --> AppServer : Запит на файл/відправка файлу
+AppServer --> DatabaseServer : Запит до БД (інформація про файли)
+AppServer --> FileStorage : Доступ до файлів
+@enduml
