@@ -38,7 +38,6 @@ BEGIN
         RAISE EXCEPTION 'The password is too weak!';
     END IF;
 
-    -- Додавання користувача в таблицю
     INSERT INTO users (username, password) VALUES (username, user_password);
 END;
 $$ LANGUAGE plpgsql;
